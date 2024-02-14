@@ -11,8 +11,8 @@ router.post('/login',login);
 
 
 // // Protected routes
+router.post("/upload-image",uploadImageController);
 router.use(authMiddleware);
 
-router.post("/upload-image",uploadImageController);
 
 export default router;

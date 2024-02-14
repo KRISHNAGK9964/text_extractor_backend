@@ -2,11 +2,10 @@ import mongoose, { Schema } from "mongoose";
 
 const ImageSchema = new Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "User",
-    },
+    // user: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "User",
+    // },
     base64Image: {
       type: String,
       required: true,
@@ -15,7 +14,7 @@ const ImageSchema = new Schema(
       type: String,
       required: true,
     },
-    textContext: {
+    textContent: {
       type: String,
       required: true,
     },
@@ -23,5 +22,5 @@ const ImageSchema = new Schema(
   { timestamps: true }
 );
 
-const Image = mongoose.models.User || mongoose.model("Image", userSchema);
+const Image = mongoose.model("Image", ImageSchema);
 export default Image;

@@ -1,10 +1,20 @@
 import express from "express";
-import router from "./routes/routes";
+import cors from 'cors';
+import * as dotenv from 'dotenv';
+import bodyParser from 'body-parser'
 
+import { connectDB} from './config/database.js';
+import router from "./routes/routes.js";
+
+dotenv.config();
+
+const port = process.env.PORT || 5000;
 const app = express();
-const port = 5000;
 
-app.use(express.json());
+app.use(cors());
+app.use(bodyParser.json({limit : '10mb'}));
+
+connectDB();
 
 app.get("/", (req,res) => {
     res.status(200).json({'message': 'This is an Test extractor service'})
